@@ -25,5 +25,7 @@ class SMSSenderServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/config.php' => base_path('config/SMSSender.php')
         ]);
+
+        $this->app->bind('SMSConfig', 'Accunity\SMSSender\SMSConfig');
     }
 }
