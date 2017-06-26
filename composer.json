@@ -1,0 +1,15 @@
+{
+    "name": "accunity/smssender",
+    "description": "Send SMS using API",
+    "type": "library",
+    "authors": [
+        {
+            "name": "kiran",
+            "email": "kiran@accunityservices.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2@dev"
+    }
+}
