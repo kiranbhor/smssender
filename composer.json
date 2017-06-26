@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Accunity\\SMSSender\\": "packages/accunity/smssender/src/"
+            "Accunity\\SMSSender\\": "src/"
         }
     }
 }
