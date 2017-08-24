@@ -2,10 +2,11 @@
 
 namespace  Accunity\SMSSender;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Psr7\Request;
 
-class SMSConfig
+class SMSConfig 
 {
     public $username;
     public $password;
@@ -64,13 +65,32 @@ class SMSConfig
         return $this->generatedURL;
     }
 
-    public function send(){
+    public function sendAsync(){
+        try{
 
+            $client = new \GuzzleHttp\Client();
+            $promise = $client->requestAsync('GET', $this->getSMSUrl());
+            $promise->then(
+                function (ResponseInterface $res) {
+                    Log::info("SMS sent status :". $res->getBody()->getContents());
+                },
+                function (RequestException $e) {
+                   Log::error("Error sending sms " ."\n". $e->getMessage() ."\n". $e->getTraceAsString());
+                }
+            );
+            $response = $promise->wait();
+           
+        }
+        catch (\Exception $ex){
+            Log::error("Error sending sms " ."\n". $ex->getMessage() ."\n". $ex->getTraceAsString());
+        }
+    }
+
+    public function send(){
         try{
 
             $client = new \GuzzleHttp\Client();
             $res = $client->request('GET', $this->getSMSUrl());
-
 
             $response = [
                 'status' => 'success',

@@ -22,7 +22,7 @@ class SMSSenderServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishes([
+        $this->publishes([  
             __DIR__.'/config/config.php' => base_path('config/smssender.php')
         ]);
     }
