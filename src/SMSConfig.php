@@ -49,9 +49,14 @@ class SMSConfig
         $this->typePlaceholder = Config::get('smssender.SMS_URL_TYPE_PLACEHOLDER');
     }
 
+
+
     public function getSMSUrl(){
 
         $this->generatedURL = $this->smsUrl;
+
+        //Change newline charactor
+        $this->message = str_replace("\n", "%0a",$this->message);
 
         $this->generatedURL = str_replace($this->userNamePlaceholder,$this->username,$this->generatedURL);
         $this->generatedURL = str_replace($this->passwordPlaceholder,$this->password,$this->generatedURL);
