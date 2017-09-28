@@ -14,7 +14,7 @@ class SMSSenderServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/config.php' => config_path('smssender.php')
+            __DIR__.'config.php' => config_path('config.php'),
         ]);
     }
 
@@ -25,8 +25,6 @@ class SMSSenderServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishes([  
-            __DIR__.'/config/config.php' => base_path('config/smssender.php')
-        ]);
+
     }
 }

@@ -2,6 +2,7 @@
 
 return [
 
+    'SMS_ENABLE' => env('SMS_ENABLE',''),
     'SMS_USERNAME' => env('SMS_USERNAME', ''),
     'SMS_PASSWORD' => env('SMS_PASSWORD', ''),
     'SMS_SENDER_ID' => env('SMS_SENDER_ID', ''),

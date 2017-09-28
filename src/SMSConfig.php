@@ -27,6 +27,8 @@ class SMSConfig
     public $priorityPlaceholder;
     public $typePlaceholder;
 
+    public $enableSMS;
+
 
 
     public function __construct()
@@ -47,6 +49,7 @@ class SMSConfig
         $this->messagePlaceholder = Config::get('smssender.SMS_URL_MESSAGE_PLACEHOLDER');
         $this->priorityPlaceholder = Config::get('smssender.SMS_URL_PRIORITY_PLACEHOLDER');
         $this->typePlaceholder = Config::get('smssender.SMS_URL_TYPE_PLACEHOLDER');
+        $this->enableSMS= Config::get('smssender.SMS_ENABLE');
     }
 
 
@@ -73,6 +76,10 @@ class SMSConfig
     public function sendAsync(){
         try{
 
+            if($this->enableSMS == false){
+                return false;
+            }
+
             $client = new \GuzzleHttp\Client();
             $promise = $client->requestAsync('GET', $this->getSMSUrl());
             $promise->then(
@@ -93,6 +100,10 @@ class SMSConfig
 
     public function send(){
         try{
+
+            if($this->enableSMS == false){
+                return false;
+            }
 
             $client = new \GuzzleHttp\Client();
             $res = $client->request('GET', $this->getSMSUrl());
