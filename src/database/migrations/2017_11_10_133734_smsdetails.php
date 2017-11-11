@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Messageetails extends Migration
+class Smsdetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Messageetails extends Migration
      */
     public function up()
     {
-        Schema::create('master__smsdetails', function (Blueprint $table) {
+        Schema::create('smssender_smsdetails', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
@@ -28,6 +28,7 @@ class Messageetails extends Migration
             $table->text('sms_url')->nullable();
             $table->text('response_url')->nullable();
             $table->string('sms_code')->nullable();
+            $table->timestamps();
         });
     }
 

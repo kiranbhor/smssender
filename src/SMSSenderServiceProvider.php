@@ -19,6 +19,7 @@ class SMSSenderServiceProvider extends ServiceProvider
             __DIR__.'/config.php' => config_path('smssender.php'),
         ]);
 
+
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
 

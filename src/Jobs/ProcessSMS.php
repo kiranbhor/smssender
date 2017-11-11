@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class ProcessSMS implements ShouldQueue
 {
@@ -35,9 +36,9 @@ class ProcessSMS implements ShouldQueue
     {
         try{
             $this->smsConfig->send();
-
         }
         catch (\Exception $ex){
+
             Log::error($ex);
         }
 

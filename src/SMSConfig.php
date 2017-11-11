@@ -220,6 +220,8 @@ class SMSConfig
                 $smsDetails->save();
             }
 
+            Log::error($ex);
+
             return $response;
         }
     }
